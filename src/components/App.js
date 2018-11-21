@@ -1,16 +1,16 @@
 import React, { Component, Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Home, Login } from '../pages';
 import Header from './Header';
-import SearchBar from './SearchBar';
-import Item from './Item';
-import ItemList from './ItemList';
 import ErrorDisplay from './ErrorDisplay';
-import faker from 'faker';
+import Content from './Content';
 
 import '../styles/App.css';
 
 class App extends Component {
+
   state = {
-    errorMessage: ""
+    errorMessage: "",
   };
 
   renderContent () {
@@ -21,17 +21,14 @@ class App extends Component {
     } else {
       return (
         <Fragment>
-          <Header/>
-          <div id="content" className="ui masthead vertical segment">
-            <SearchBar/>
-            <ItemList>
-              <Item
-                  image={{src: faker.image.animals(), name: faker.name.jobArea()}}
-                  title={faker.lorem.word()}
-                  author={faker.name.firstName()}
-              />
-            </ItemList>
-          </div>
+          <Route path="/" component={Header}/>
+          <Content>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/login" component={Login}/>
+              <Route path="/signup" component={Login}/>
+            </Switch>
+          </Content>
         </Fragment>
       );
     }
@@ -39,7 +36,7 @@ class App extends Component {
 
   render () {
     return (
-      <div class="ui placeholder segment">
+      <div className="ui placeholder segment">
         {this.renderContent()}
       </div>
     )
