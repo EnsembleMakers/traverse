@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function DisplayItem(props) {
+export default function ItemList(props) {
   return (
     <div class="ui container three column grid">
       <div className="row">
