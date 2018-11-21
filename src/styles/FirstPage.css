@@ -1,0 +1,23 @@
+.buyerSide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.sellerSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+
+
