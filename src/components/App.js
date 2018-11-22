@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Home, Login } from '../pages';
+import { Home, SignIn, SignUp } from '../pages';
 import Header from './Header';
 import ErrorDisplay from './ErrorDisplay';
 import Content from './Content';
@@ -25,8 +25,8 @@ class App extends Component {
           <Content>
             <Switch>
               <Route exact path="/" component={Home}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/signup" component={Login}/>
+              <Route path="/login" component={SignIn}/>
+              <Route path="/signup" component={SignUp}/>
             </Switch>
           </Content>
         </Fragment>
