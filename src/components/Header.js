@@ -26,4 +26,4 @@ const mapStateToProps = (state) => {
   return { user: state.loggedInUser };
 }
 
-export default connect()
+export default connect(mapStateToProps)(Header);
