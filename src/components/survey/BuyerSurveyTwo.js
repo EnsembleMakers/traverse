@@ -1,14 +1,8 @@
 import React,{Fragment} from 'react';
-import ReactDOM from 'react-dom';
 import '../../styles/BuyerSurveyTwo.css';
 
-class BuyerSurveyTwo extends React.Component{
+export default function BuyerSurveyTwo(props) {
 
-    state = {
-
-    };
-
-    render(){
         return (
             <Fragment>
                 {/* <i class="us flag"></i>
@@ -251,7 +245,5 @@ class BuyerSurveyTwo extends React.Component{
             </div>
             </Fragment>
         );
-    }
 }
 
-export default BuyerSurveyTwo;

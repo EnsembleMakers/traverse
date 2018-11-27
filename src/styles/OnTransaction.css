@@ -1,0 +1,46 @@
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+.productList{
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    float: center;
+
+}
+
+.buyerInfo{
+    display: block;
+    /* justify-content: center;
+    align-items: center;
+    float: center; */
+}
+
+.ui.four.statistics{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-top: 5%;
+}
+
+.ui.progress.success{
+    margin-top: 5%;
+}
+
+.button{
+    text-align: center;
+    float: center;
+}
+
+.large.ui.black.button{
+    margin-right: 10%;
+    margin-left: 10%;
+}
