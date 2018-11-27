@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import faker from 'faker';
@@ -14,11 +14,25 @@ class Header extends Component {
       {/* <Link to="#" className="item">Features</Link>
       <Link to="#" className="item">Testimonials</Link> */}
       <div className="right menu">
-        <Link to="/login" className="item">Sign-in</Link>
-        <Link to="/signup" className="item">Sign-up</Link> 
+        {this.changeHeader(this.user)}
       </div>
     </div>
     )
+  }
+
+  changeHeader(user) {
+    if(!user){
+      return (
+        <Fragment>
+          <Link to="/login" className="item">Sign-in</Link>
+          <Link to="/signup" className="item">Sign-up</Link>
+        </Fragment>
+      );
+    } else {
+      return (
+        <Link to="/" className="item">Logout</Link>
+      );
+    }
   }
 }
 

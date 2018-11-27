@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Authentication } from '../../components';
 
-class SignUp extends Component {
+class Register extends Component {
   render() {
     return (
       <div className="ui middle aligned center aligned grid">
@@ -70,4 +71,4 @@ class SignUp extends Component {
     )
   }
 }
-export default SignUp;
+export default Register;
