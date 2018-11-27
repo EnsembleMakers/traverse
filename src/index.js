@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 // ReactDOM.render(<App />, document.querySelector("#root"));
 
+// ReactDOM.render(<Root />, document.querySelector("#root"));
 
 import FirstPage from './components/survey/FirstPage';
 import BuyerSurveyOne from './components/survey/BuyerSurveyOne';
