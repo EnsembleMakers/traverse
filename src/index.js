@@ -7,7 +7,7 @@ import BuyerSurveyOne from './components/survey/BuyerSurveyOne';
 import BuyerSurveyTwo from './components/survey/BuyerSurveyTwo';
 import BuyerSurveyThree from './components/survey/BuyerSurveyThree';
 import OnTransaction from './components/transaction/OnTransaction';
-
+import AboutProducer from './components/transaction/AboutProducer';
 
 class App extends React.Component{
 
@@ -22,11 +22,12 @@ class App extends React.Component{
                 {/* <BuyerSurveyOne/> */}
                  {/* <BuyerSurveyTwo/> */}
                 {/* <BuyerSurveyThree/> */}
-                <OnTransaction/>
+                {/* <OnTransaction/> */}
+                <AboutProducer/>
             </Fragment>
         );
     }
 }
 
-ReactDOM.render(<OnTransaction/>, document.querySelector("#root"));
+ReactDOM.render(<AboutProducer/>, document.querySelector("#root"));
 
