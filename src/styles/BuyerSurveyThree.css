@@ -1,0 +1,40 @@
+.surveyStatistics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.checkbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.bottomContents{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.main{
+    text-align: center;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-bottom: 0%;
+}
+
+
+

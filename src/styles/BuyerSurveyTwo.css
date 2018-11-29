@@ -1,0 +1,39 @@
+.main{
+    margin-bottom: 5%;
+}
+
+.fourteen.wide.column{
+    height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+}
+
+.nextButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin-top:2%;
+    margin-bottom: 5%;
+}
+
+.skipButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-top:2%;
+    margin-bottom: 5%;
+}
+
+.bottomContents{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-top: 3%;
+}

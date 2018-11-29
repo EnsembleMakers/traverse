@@ -1,8 +1,18 @@
+.front-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-top: 3%;
+}
+
 .buyerSide{
     display: flex;
     justify-content: center;
     align-items: center;
     float: center;
+    margin-top: 10%;
+    padding-left: 10%;
 }
 
 .sellerSide {
@@ -10,13 +20,29 @@
     justify-content: center;
     align-items: center;
     float: center;
+    margin-top: 10%;
+    padding-right: 10%;
 }
 
-.button{
+.sellerButton{
     display: flex;
     justify-content: center;
     align-items: center;
     float: center;
+    margin-top:5%;
+    margin-bottom: 3%;
+    padding-left: 10%;
+
+}
+
+.buyerButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-top:5%;
+    margin-bottom: 3%;
+    padding-right: 10%;
 }
 
 
