@@ -23,11 +23,11 @@ class App extends React.Component{
                  {/* <BuyerSurveyTwo/> */}
                 {/* <BuyerSurveyThree/> */}
                 {/* <OnTransaction/> */}
-                <AboutProducer/>
+                {/* <AboutProducer/> */}
             </Fragment>
         );
     }
 }
 
-ReactDOM.render(<AboutProducer/>, document.querySelector("#root"));
+ReactDOM.render(<BuyerSurveyOne/>, document.querySelector("#root"));
 

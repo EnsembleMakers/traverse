@@ -26,9 +26,13 @@ export default function OnTransaction(props) {
             <div className="productDetail">
                 <div class="ui segment">
                     <h3>상품코드 Product Code</h3><br/>
-                    <h3>주문갯수 Total Order</h3><br/>   
+                    <p></p>
+                    <h3>주문갯수 Total Order</h3><br/>  
+                    <p></p> 
                     <h3>상품단가 Product Price</h3><br/>   
+                    <p></p>
                     <h3>주문금액 Total Price</h3><br/>   
+                    <p></p>
                 </div>
             </div>
           </div>
@@ -97,7 +101,7 @@ export default function OnTransaction(props) {
                 <div class="ui four statistics">
                     <div class="statistic">
                       <div class="value">
-                        D-22
+                        D-22&nbsp;
                       </div>
                       <div class="label">
                       <br/>
@@ -106,6 +110,7 @@ export default function OnTransaction(props) {
                     </div>
                     <div class="statistic">
                       <div class="value">
+                       &nbsp;
                         <img src="./img/teamwork.png"/>
                         &nbsp;3명
                       </div>
@@ -120,7 +125,7 @@ export default function OnTransaction(props) {
                       <div class="bar">
                         <div class="progress"></div>
                       </div>
-                      <div class="label">10 % 진행중</div>
+                      <div class="label"><h3>10 % 진행중</h3></div>
                     </div>
 
                  <div className="button"> 

@@ -25,7 +25,7 @@ export default function BuyerSurveyThree(props) {
                 </div>
                 <br/>
                 <div class="ui large input focus">
-                    <input type="text" placeholder="Password"/>
+                    <input type="password" placeholder="Password"/>
                 </div>
                 <div className="inline"><br/><br/>
                     <button class="ui blue button">Complete</button><br/><br/><br/>
