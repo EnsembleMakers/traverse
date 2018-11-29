@@ -43,8 +43,8 @@ class Login extends Component {
     return (
       <div className="ui middle aligned center aligned grid">
         <form class="ui form large" onSubmit={this.handleSubmit}>
-          <div className={'ui stacked segment' + (submitted && !email ? ' has-error' : '')}>
-            <div class="field">
+          <div className={'ui stacked segment'}>
+            <div className={'field' + (submitted && !email ? ' has-error' : '')}>
               <div class="ui left icon input">
                 <i class="user icon" />
                 <input type="text" name="email" placeholder="E-mail address" value={email} onChange={this.handleChange}/>
@@ -53,13 +53,17 @@ class Login extends Component {
                 }
               </div>
             </div>
-            <div class="field">
+            <div className={'field' + (submitted && !password ? ' has-error' : '')}>
               <div class="ui left icon input">
                 <i class="lock icon" />
-                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
+                {submitted && !password &&
+                  <div className="help-block">Password is required</div>
+                }
               </div>
             </div>
             <div class="ui fluid large teal submit button">Login</div>
+            <Link to="/register" className="ui button">Register</Link>
           </div>
         </form>
       </div>
@@ -67,4 +71,11 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapStateToProps(state) {
+  const { loggingIn } = state.authentication;
+  return {
+    loggingIn
+  };
+}
+
+export default connect(mapStateToProps)(Login);

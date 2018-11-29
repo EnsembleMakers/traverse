@@ -1,31 +1,84 @@
 import React, { Component } from 'react';
-import { Authentication } from '../../components';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { userActions } from '../../actions';
 
 class Register extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: {
+        email: '',
+        firstName: '',
+        lastName: '',
+        password: ''
+      },
+      submitted: false
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this); 
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    const { user } = this.state;
+    this.setState({
+      user: {
+        ...user,
+        [name]: value
+      }
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.setState({ submitted: true });
+    const { user } = this.state;
+    const { dispatch } = this.props;
+    if (user.firstName && user.lastName && user.email && user.password){
+      dispatch(userActions.register(user));
+    }
+  }
+
   render() {
+    const { registering } = this.props;
+    const { user, submitted } = this.state;
     return (
       <div className="ui middle aligned center aligned grid">
-      <form class="ui form large">
+      <form className={'ui form large'} onSubmit={this.handleSubmit}>
         <div class="ui stacked segment">
-          <div class="field">
+          <div className={'field' + (submitted && !user.email ? ' has-error' : '')}>
             <div class="ui left icon input">
               <i class="user icon" />
-              <input type="text" name="email" placeholder="E-mail address" />
+              <input type="text" name="email" placeholder="E-mail address" value={user.email} onChange={this.handleChange} />
             </div>
+            {submitted && !user.lastName &&
+              <div className="help-block">Last Name is required</div>
+            }
           </div>
-          <div class="field">
+          <div className={'field' + (submitted && !user.firstName ? ' has-error' : '')}>
             <div class="ui left icon input">
               <i class="user icon" />
-              <input type="text" name="email" placeholder="E-mail address" />
+              <input type="text" name="first-name" placeholder="First Name" />
             </div>
           </div>
-          <div class="field">
+          <div className={'field' + (submitted && !user.lastName ? ' has-error' : '')}>
+            <div class="ui left icon input">
+              <i class="user icon" />
+              <input type="text" name="last-name" placeholder="Last Name" />
+            </div>
+          </div>
+          <div className={'field' + (submitted && !user.password ? ' has-error' : '')}>
             <div class="ui left icon input">
               <i class="lock icon" />
               <input type="password" name="password" placeholder="Password" />
             </div>
           </div>
-          <div class="field">
+          <div className={'field' + (submitted && !user.password ? ' has-error' : '')}>
             <div class="ui left icon input">
               <i class="lock icon" />
               <input type="password" name="password-confirm" placeholder="Retype Password" />
