@@ -1,0 +1,47 @@
+.top-logo{
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+
+.ui.grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: center;
+    margin-right: 2%;
+}
+
+.ui.search{
+    /* display: flex; */
+    text-align: right;
+    justify-content: right;
+}
+
+.productButton{
+    text-align: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* float: center; */
+}
+
+.productionList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui.card:last-child{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 0px;
+}
+
+.ui.card:first-child{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 0px;
+}
