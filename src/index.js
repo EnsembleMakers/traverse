@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
+<<<<<<< HEAD
 
 import FirstPage from './components/survey/FirstPage';
 import BuyerSurveyOne from './components/survey/BuyerSurveyOne';
@@ -30,4 +31,22 @@ class App extends React.Component{
 }
 
 ReactDOM.render(<BuyerSurveyOne/>, document.querySelector("#root"));
+=======
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
+
+import { BrowserRouter } from 'react-router-dom';
+import App from './components/App';
+
+const Root = () => (
+  <BrowserRouter>
+    <Provider store={createStore(reducers)}>
+      <App/>
+    </Provider>
+  </BrowserRouter>
+);
+
+ReactDOM.render(<Root/>, document.querySelector("#root"));
+>>>>>>> ad40e2dc3f67462e4921d9842dd20ac92ec6185f
 
