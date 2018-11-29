@@ -1,33 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
 
-import FirstPage from './components/survey/FirstPage';
-import BuyerSurveyOne from './components/survey/BuyerSurveyOne';
-import BuyerSurveyTwo from './components/survey/BuyerSurveyTwo';
-import BuyerSurveyThree from './components/survey/BuyerSurveyThree';
-import OnTransaction from './components/transaction/OnTransaction';
-import AboutProducer from './components/transaction/AboutProducer';
+import { BrowserRouter } from 'react-router-dom';
+import App from './components/App';
 
-class App extends React.Component{
+const Root = () => (
+  <BrowserRouter>
+    <Provider store={createStore(reducers)}>
+      <App/>
+    </Provider>
+  </BrowserRouter>
+);
 
-    state = {
-
-    };
-
-    render(){
-        return (
-            <Fragment>
-                {/* <FirstPage/> */}
-                {/* <BuyerSurveyOne/> */}
-                 {/* <BuyerSurveyTwo/> */}
-                {/* <BuyerSurveyThree/> */}
-                {/* <OnTransaction/> */}
-                <AboutProducer/>
-            </Fragment>
-        );
-    }
-}
-
-ReactDOM.render(<AboutProducer/>, document.querySelector("#root"));
+ReactDOM.render(<Root/>, document.querySelector("#root"));
 
