@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import ItemList from '../components/ItemList';
 import Item from '../components/Item';
@@ -21,4 +22,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);

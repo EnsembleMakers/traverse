@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ItemList(props) {
   return (
-    <div class="ui container three column grid">
+    <div className="ui container three column grid">
       <div className="row">
         <div className="column">
           <h3>추천목록</h3>

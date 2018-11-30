@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Item(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="ui card centered">
       <div className="ui image rounded">

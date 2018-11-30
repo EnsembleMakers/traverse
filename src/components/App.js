@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Home, Login, Register } from '../pages';
@@ -30,8 +30,8 @@ class App extends Component {
         <Content>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login}/>
-            <Route path="/signup" component={Register}/>
+            <Route exact path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
           </Switch>
         </Content>
       </Fragment>
@@ -52,7 +52,6 @@ class App extends Component {
 
   componentDidMount () {
     console.log('컴포넌트 마운트');
-    this.setState({errorMessage: null});
   }
 }
 
@@ -63,4 +62,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

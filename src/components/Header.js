@@ -1,43 +1,45 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { PureComponent, Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
+// import { connect } from 'react-redux';
 import faker from 'faker';
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
     return (
     <div className="ui top fixed menu">
-      <Link to="/" className="item">
+      <NavLink to="/" className="item">
         <img src={faker.image.avatar()}/>
         <span id="main-font">Traverse</span>
-      </Link>
+      </NavLink>
       {/* <Link to="#" className="item">Features</Link>
       <Link to="#" className="item">Testimonials</Link> */}
       <div className="right menu">
-        {this.changeHeader(this.user)}
+        <NavLink to="/login" className="item">Login</NavLink>
+        <NavLink to="/register" className="item">Register</NavLink>
+        {/* {this.changeHeader(this.user)} */}
       </div>
     </div>
     )
   }
 
-  changeHeader(user) {
-    if(!user){
-      return (
-        <Fragment>
-          <Link to="/login" className="item">Sign-in</Link>
-          <Link to="/signup" className="item">Sign-up</Link>
-        </Fragment>
-      );
-    } else {
-      return (
-        <Link to="/" className="item">Logout</Link>
-      );
-    }
-  }
+  // changeHeader(user) {
+  //   if(!user){
+  //     return (
+  //       <Fragment>
+
+  //       </Fragment>
+  //     );
+  //   } else {
+  //     return (
+  //       // <Link to="/" className="item">Logout</Link>
+  //     );
+  //   }
+  // }
 }
 
 const mapStateToProps = (state) => {
   return { user: state.loggedInUser };
 }
 
-export default connect(mapStateToProps)(Header);
+// export default connect(mapStateToProps)(Header);
+export default Header;

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions } from '../../actions';
 
-class Login extends Component {
+class Login extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -19,6 +19,7 @@ class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    console.log('Login constructed');
   }
 
   handleChange(e) {
@@ -38,15 +39,16 @@ class Login extends Component {
   }
 
   render() {
+    console.log('Login component loaded');
     const { loggingIn } = this.props;
     const { email, password, submitted } = this.state;
     return (
       <div className="ui middle aligned center aligned grid">
-        <form class="ui form large" onSubmit={this.handleSubmit}>
+        <form className="ui form large" onSubmit={this.handleSubmit}>
           <div className={'ui stacked segment'}>
             <div className={'field' + (submitted && !email ? ' has-error' : '')}>
-              <div class="ui left icon input">
-                <i class="user icon" />
+              <div className="ui left icon input">
+                <i className="user icon" />
                 <input type="text" name="email" placeholder="E-mail address" value={email} onChange={this.handleChange}/>
                 {submitted && !email &&
                   <div className="help-block">E-mail address is required</div>
@@ -54,15 +56,15 @@ class Login extends Component {
               </div>
             </div>
             <div className={'field' + (submitted && !password ? ' has-error' : '')}>
-              <div class="ui left icon input">
-                <i class="lock icon" />
+              <div className="ui left icon input">
+                <i className="lock icon" />
                 <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
                 {submitted && !password &&
                   <div className="help-block">Password is required</div>
                 }
               </div>
             </div>
-            <div class="ui fluid large teal submit button">Login</div>
+            <div className="ui fluid large teal submit button">Login</div>
             <Link to="/register" className="ui button">Register</Link>
           </div>
         </form>
@@ -78,4 +80,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(
+  mapStateToProps,
+)(Login);
