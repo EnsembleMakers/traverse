@@ -110,39 +110,6 @@ class Register extends Component {
         </div>
       </form>
     </div>
-    // <div className="ui middle aligned center aligned grid">
-    //     <form className="ui form large">
-    //       <div className="field">
-    //         <label htmlFor="email">Email</label>
-    //         <input type="text" name="" placeholder="Email Address"/>
-    //       </div>
-    //       <div className="fields">
-    //         <div className="field">
-    //           <label>First Name</label>
-    //           <input type="text" name="first-name" placeholder="First Name"/>
-    //         </div>
-    //         <div className="field">
-    //           <label>Last Name</label>
-    //           <input type="text" name="last-name" placeholder="Last Name"/>
-    //         </div>
-    //       </div>
-    //       <div className="field">
-    //         <label>Password</label>
-    //         <input type="password" name="password" placeholder="Input Password"/>
-    //       </div>
-    //       <div className="field">
-    //         <label>Confirm Password</label>
-    //         <input type="password" name="confirm-password" placeholder="Repeat Password"/>
-    //       </div>
-    //       <div className="field">
-    //         <div className="ui checkbox">
-    //           <input type="checkbox" tabindex="0" className="hidden"/>
-    //           <label>I agree to the Terms and Conditions</label>
-    //         </div>
-    //       </div>
-    //       <button className="ui button" type="submit">Submit</button>
-    //     </form>
-    //   </div>
     )
   }
 }

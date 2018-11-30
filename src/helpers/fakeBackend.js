@@ -15,7 +15,7 @@ export function configureFakeBackend() {
 
                     // find if any user matches login credentials
                     let filteredUsers = users.filter(user => {
-                        return user.username === params.username && user.password === params.password;
+                        return user.email === params.email && user.password === params.password;
                     });
 
                     if (filteredUsers.length) {
@@ -76,9 +76,9 @@ export function configureFakeBackend() {
                     let newUser = JSON.parse(opts.body);
 
                     // validation
-                    let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
+                    let duplicateUser = users.filter(user => { return user.email === newUser.email; }).length;
                     if (duplicateUser) {
-                        reject('Username "' + newUser.username + '" is already taken');
+                        reject('Username "' + newUser.email + '" is already taken');
                         return;
                     }
 

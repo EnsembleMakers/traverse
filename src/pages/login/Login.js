@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions } from '../../actions';
@@ -34,7 +34,7 @@ class Login extends PureComponent {
     const { email, password } = this.state;
     const { dispatch } = this.props;
     if (email && password) {
-        dispatch(userActions.login(email, password));
+      dispatch(userActions.login(email, password));
     }
   }
 
@@ -64,8 +64,11 @@ class Login extends PureComponent {
                 }
               </div>
             </div>
-            <div className="ui fluid large teal submit button">Login</div>
+            <button className="ui fluid large teal submit button" type="submit">Login</button>
             <Link to="/register" className="ui button">Register</Link>
+            {loggingIn &&
+              <Redirect to='/'/>
+            }
           </div>
         </form>
       </div>
@@ -80,6 +83,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-)(Login);
+export default connect(mapStateToProps)(Login);
