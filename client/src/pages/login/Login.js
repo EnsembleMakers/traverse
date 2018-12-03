@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions } from '../../actions';
+import { GoogleButton } from './oauth2';
 
 class Login extends PureComponent {
   constructor(props) {
@@ -42,6 +43,9 @@ class Login extends PureComponent {
     console.log('Login component loaded');
     const { loggingIn } = this.props;
     const { email, password, submitted } = this.state;
+    if (loggingIn) {
+      return <Redirect to='/'/>;
+    }
     return (
       <div className="ui middle aligned center aligned grid">
         <form className="ui form large" onSubmit={this.handleSubmit}>
@@ -66,9 +70,7 @@ class Login extends PureComponent {
             </div>
             <button className="ui fluid large teal submit button" type="submit">Login</button>
             <Link to="/register" className="ui button">Register</Link>
-            {loggingIn &&
-              <Redirect to='/'/>
-            }
+            <GoogleButton/>
           </div>
         </form>
       </div>
