@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FontAwesome } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 export default class GoogleButton extends Component {
@@ -13,9 +13,9 @@ export default class GoogleButton extends Component {
         onSuccess={this.responseGoogle}
         onFailure={this.responseGoogle}
       >
-      <FontAwesome
-        name='google'
-      />
+      {/* <FontAwesomeIcon
+        icon='google'
+      /> */}
       <span> Login with Google</span>
       </GoogleLogin>
     )

@@ -1,28 +1,19 @@
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');
-const { User } = require('../models');
+const google = require('./googleStrategy');
+const { User } = require('../models/user');
 
 module.exports = (passport) => {
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user.email);
   });
   
-  passport.deserializeUser((id, done) => {
-    User.find({
-      where:{id},
-      include: [{
-        model: User,
-        attributes: ['id', 'nick'],
-        as: 'Followers'
-      }, {
-        model: User,
-        attributes: ['id', 'nick'],
-        as: 'Followings'
-      }]
-    })
+  passport.deserializeUser((email, done) => {
+    User.findOne({ email: email })
       .then(user => done(null, user))
       .catch(err => done(err));
   });
   local(passport);
   kakao(passport);
+  google(passport);
 };

@@ -34,18 +34,18 @@ class Register extends Component {
         [name]: value
       }
     });
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log('handleSubmit event emission');
-    console.log(this.state);
     this.setState({ submitted: true });
     const { user } = this.state;
     const { dispatch } = this.props;
     if (user.firstName && user.lastName && user.email && user.password){
+      console.log('handleSubmit event emission');
+      console.log(this.state);
       dispatch(userActions.register(user));
     }
   }

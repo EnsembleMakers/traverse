@@ -55,7 +55,7 @@ class Login extends PureComponent {
                 <i className="user icon" />
                 <input type="text" name="email" placeholder="E-mail address" value={email} onChange={this.handleChange}/>
                 {submitted && !email &&
-                  <div className="help-block">E-mail address is required</div>
+                  <div className="ui basic red pointing prompt label transition visible">E-mail address is required</div>
                 }
               </div>
             </div>
@@ -64,7 +64,7 @@ class Login extends PureComponent {
                 <i className="lock icon" />
                 <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
                 {submitted && !password &&
-                  <div className="help-block">Password is required</div>
+                  <div className="ui basic red pointing prompt label transition visible">Password is required</div>
                 }
               </div>
             </div>
