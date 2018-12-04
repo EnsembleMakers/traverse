@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { Home, Login, Register } from '../pages';
+// import { Home, Login, Register } from '../pages';
+import { Main } from '../pages';
 
 import { history } from '../helpers';
 import { alertActions } from '../actions';
@@ -10,6 +11,7 @@ import Header from './Header';
 import Content from './Content';
 
 import '../styles/App.css';
+import { FirstPage, BuyerSurveyOne, BuyerSurveyTwo, BuyerSurveyThree } from './survey';
 
 class App extends Component {
 
@@ -25,16 +27,13 @@ class App extends Component {
 
   renderContent () {
     return (
-      <Fragment>
-        <Route path="/" component={Header}/>
-        <Content>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/login" component={Login}/>
-            <Route path="/register" component={Register}/>
-          </Switch>
-        </Content>
-      </Fragment>
+      <Switch>
+        <Route exact path="/" component={FirstPage}/>
+        <Route path="/survey/buyer/1" component={BuyerSurveyOne}/>
+        <Route path="/survey/buyer/2" component={BuyerSurveyTwo}/>
+        <Route path="/survey/buyer/3" component={BuyerSurveyThree}/>
+        <Route path="/main" component={Main}/>
+      </Switch>
     );
   }
 

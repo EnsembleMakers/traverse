@@ -2,6 +2,7 @@ import { userConstants } from '../constants';
 import { userService } from '../services';
 import { alertActions } from './';
 import { history } from '../helpers';
+const axios = require('axios');
 
 export const userActions = {
     login,
@@ -11,26 +12,38 @@ export const userActions = {
     delete: _delete
 };
 
-export function login(username, password) {
+export function login(email, password) {
     return dispatch => {
-      dispatch(request({ username }));
+      dispatch(request({ email }));
 
-      userService.login(username, password)
-        .then(
-          user => { 
-            dispatch(success(user));
-            history.push('/');
-          },
-          error => {
-            dispatch(failure(error.toString()));
-            dispatch(alertActions.error(error.toString()));
-          }
-        );
+      // dispatch(success(email, password));
+      // userService.login(email, password)
+      //   .then(
+      //     user => { 
+      //       dispatch(success(user));
+      //       history.push('/');
+      //     },
+      //     error => {
+      //       dispatch(failure(error.toString()));
+      //       dispatch(alertActions.error(error.toString()));
+      //     }
+      //   );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    async function request(email) {
+      // return {
+      //    type: userConstants.LOGIN_REQUEST,
+      //    user: await axios.get('/api/users')
+      //                 .then(res => {
+      //                   res.forEach( => {
+                          
+      //                   });
+      //                   return 
+      //                 })
+      // } 
+    }
+    // async function success(email, password) { return { type: userConstants.LOGIN_SUCCESS, user: await axios. } }
+    async function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
 
 export function logout() {

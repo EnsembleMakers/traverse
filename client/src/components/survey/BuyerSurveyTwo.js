@@ -1,4 +1,5 @@
 import React,{Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/BuyerSurveyTwo.css';
 
 export default function BuyerSurveyTwo(props) {
@@ -213,7 +214,9 @@ export default function BuyerSurveyTwo(props) {
                     </div>
                     <div class="four wide column">
                          <div className="nextButton">
+                         <Link to="/survey/buyer/3">
                             <button class="ui blue button">Next</button>
+                         </Link>
                         </div>
                     </div>
                     <div class="four wide column"></div>

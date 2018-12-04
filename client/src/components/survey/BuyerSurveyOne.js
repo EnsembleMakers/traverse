@@ -1,4 +1,5 @@
 import React,{Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/BuyerSurveyOne.css';
 
 export default function BuyerSurveyOne(props) {
@@ -60,7 +61,9 @@ export default function BuyerSurveyOne(props) {
                 </div>
                 <div class="inline">
                 <br></br>
-                    <button class="ui blue button">Next</button><br/><br/>
+                <Link to='/survey/buyer/2'>
+                    <button class="ui blue button">Next</button>
+                </Link><br/><br/>
                 </div>
             </div>
             <br></br>

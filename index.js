@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
-const passportConfig = require('./passport');
+const passportConfig = require('./services');
 
 const express = require('express');
 const app = express();
@@ -74,6 +74,17 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render('error');
 });
+
+if (app.get('env') === 'production') {
+  // Express 가 production 어셋들을 제공한다. (main.js, main.css ...)
+  app.use(express.static('client/build'));
+  
+  // Express 가 라우트를 구분하지 못하면 index.html 을 제공한다.
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기중');

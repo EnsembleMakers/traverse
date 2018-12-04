@@ -8,7 +8,7 @@ class Header extends PureComponent {
     const { loggedIn } = this.props;
     return (
     <div className="ui top fixed menu">
-      <NavLink to="/" className="item">
+      <NavLink to="/main" className="item">
         <img src={faker.image.avatar()}/>
         <span id="main-font">Traverse</span>
       </NavLink>
@@ -25,13 +25,13 @@ class Header extends PureComponent {
     if(!user){
       return (
         <Fragment>
-          <NavLink to="/login" className="item">Login</NavLink>
-          <NavLink to="/register" className="item">Register</NavLink>
+          <NavLink to="/main/login" className="item">Login</NavLink>
+          <NavLink to="/main/register" className="item">Register</NavLink>
         </Fragment>
       );
     } else {
       return (
-        <NavLink to="/logout" className="item">Logout</NavLink>
+        <NavLink to="/main/logout" className="item">Logout</NavLink>
       );
     }
   }

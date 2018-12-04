@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
   
   if (error) return res.status(400).send(error.message);
 
-  const rebody = Object.keys(req.body).map((key) => {    
+  const rebody = Object.keys(req.body).map(async (key) => {    
     if (key === 'password')
       return { key: await bcrypt.hash(req.body[password], 12)}
     else return { key: req.body[key] };
@@ -62,10 +62,10 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   let user = await User.findByIdAndDelete(req.params.id);
 
-  user.posts_host.forEach(post_id => {
+  user.posts_host.forEach(async post_id => {
     await Post.findByIdAndDelete(post_id);
   });
-  user.posts_join.forEach(post_id => {
+  user.posts_join.forEach(async post_id => {
     await Portion.deleteMany({ post_id: post_id, user_id: user._id });
   });
 

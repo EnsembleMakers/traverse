@@ -57,10 +57,8 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   let post = await Post.findByIdAndDelete(req.params.id);
 
-  await User.update( { posts_host: post.host }, { $pullAll: { posts_host: post.host } } );
-  post.participants.forEach(portion_id => {
-    await Portion.findByIdAndDelete(portion_id);
-  });
+  await User.update({ posts_host: post.host }, { $pullAll: { posts_host: post.host } });
+  await Portion.deleteMany({ post_id: post._id  });
 
   res.send(post);
 });

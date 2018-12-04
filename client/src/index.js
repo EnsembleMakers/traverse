@@ -7,8 +7,8 @@ import { store } from './helpers';
 
 import App from './components/App';
 
-import { configureFakeBackend } from './helpers';
-configureFakeBackend();
+// import { configureFakeBackend } from './helpers';
+// configureFakeBackend();
 
 const Root = () => (
   <BrowserRouter>

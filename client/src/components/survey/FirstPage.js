@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/FirstPage.css';
 
 export default function FirstPage(props) {
@@ -36,7 +37,9 @@ export default function FirstPage(props) {
     </div>
      
       <div className="sellerButton">
-      <button class="ui blue button">Next</button>
+      <Link to='/survey/buyer/1'>
+        <button class="ui blue button">Next</button>
+      </Link>
       </div>
  
       </div>
@@ -60,7 +63,9 @@ export default function FirstPage(props) {
       </div>
 
       <div className="buyerButton">
-      <button class="ui blue button">Next</button>
+      <Link to='/survey/supplier/1'>
+        <button class="ui blue button">Next</button>
+      </Link>
       </div>
 
     </div>

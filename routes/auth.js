@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { User } = require('../models');
+const { User } = require('../models/user');
 
 const router = express.Router();
 router.post('/register', isNotLoggedIn, async (req, res, next) => {
@@ -13,7 +13,7 @@ router.post('/register', isNotLoggedIn, async (req, res, next) => {
       req.flash('registerError', '이미 가입된 이메일입니다.');
       return res.redirect('/register');
     }
-    const rebody = Object.keys(req.body).map((key) => {    
+    const rebody = Object.keys(req.body).map(async (key) => {    
       if (key === 'password')
         return { key: await bcrypt.hash(req.body[password], 12)}
       else return { key: req.body[key] };

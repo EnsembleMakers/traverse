@@ -1,4 +1,5 @@
 import React,{Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/BuyerSurveyThree.css';
 
 export default function BuyerSurveyThree(props) {
@@ -28,7 +29,9 @@ export default function BuyerSurveyThree(props) {
                     <input type="text" placeholder="Password"/>
                 </div>
                 <div className="inline"><br/><br/>
-                    <button class="ui blue button">Complete</button><br/><br/><br/>
+                    <Link to="/main">
+                      <button class="ui blue button">Complete</button><br/><br/><br/>
+                    </Link>
                 </div>
             </div>
             <br/><br/>
