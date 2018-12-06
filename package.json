@@ -30,9 +30,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "server": "nodemon index.js",
-    "client": "npm run start --prefix client",
+    "client": "cd client && react-scripts start",
     "dev": "concurrently \"nodemon index.js\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
