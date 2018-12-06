@@ -1,4 +1,5 @@
 import { authHeader } from '../helpers';
+import axios from 'axios';
 require('dotenv').config();
 
 export const userService = {
@@ -6,98 +7,25 @@ export const userService = {
     logout,
     register,
     getAll,
-    getById,
     update,
     delete: _delete
 };
 
-function login(email, password) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    };
-
-    return fetch(`${process.env.apiURL}/auth/login`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // login successful if there's a jwt token in the response
-            if (user.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-            }
-
-            return user;
-        });
+async function login(email, password) {
+  return await axios.post(`/auth/login`, { email, password });
 }
-
-function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+async function logout() {
+  return await axios.get(`/auth/logout`);
 }
-
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${process.env.apiURL}/users`, requestOptions).then(handleResponse);
+async function register(user) {
+  return await axios.post(`/auth/register`, user);
 }
-
-function getById(id) {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${process.env.apiURL}/users/${id}`, requestOptions).then(handleResponse);
+async function getAll() {
+  return await axios.get(`/api/users`);
 }
-
-function register(user) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
-
-    return fetch(`${process.env.apiURL}/users/register`, requestOptions).then(handleResponse);
+async function update(id) {
+  return await axios.patch(`/api/${id}`);
 }
-
-function update(user) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
-
-    return fetch(`${process.env.apiURL}/users/${user.id}`, requestOptions).then(handleResponse);;
-}
-
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
-    const requestOptions = {
-        method: 'DELETE',
-        headers: authHeader()
-    };
-
-    return fetch(`${process.env.apiURL}/users/${id}`, requestOptions).then(handleResponse);
-}
-
-function handleResponse(response) {
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (!response.ok) {
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                logout();
-                window.location.reload(true);
-            }
-
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-        }
-
-        return data;
-    });
+async function _delete(id) {
+  return await axios.delete(`${process.env.apiURL}/api/${id}`);
 }

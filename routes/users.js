@@ -1,6 +1,7 @@
 const { User, validate } = require('../models/user');
 const { Post } = require('../models/post');
 const { Portion } = require('../models/portion');
+const { hashPassword } = require('./middlewares');
 
 const express = require('express');
 const router = express.Router();
@@ -31,12 +32,15 @@ router.post('/', async (req, res) => {
   const { error } = validate(req.body);
   
   if (error) return res.status(400).send(error.message);
-
-  const rebody = Object.keys(req.body).map(async (key) => {    
-    if (key === 'password')
-      return { key: await bcrypt.hash(req.body[password], 12)}
-    else return { key: req.body[key] };
+  
+  let rebody = {};
+  const password = await hashPassword(req.body.password);
+  rebody['password'] = password;
+  Object.keys(req.body).map((key) => {    
+    if (key === 'password') return;
+    else return rebody[key] = req.body[key];
   });
+  console.log(rebody);
   let user = new User(rebody);
   user = await user.save();
 

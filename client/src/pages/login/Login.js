@@ -9,9 +9,6 @@ class Login extends PureComponent {
   constructor(props) {
     super(props);
 
-    // reset login status
-    this.props.dispatch(userActions.logout());
-
     this.state = {
       email: '',
       password: '',
@@ -44,7 +41,7 @@ class Login extends PureComponent {
     const { loggingIn } = this.props;
     const { email, password, submitted } = this.state;
     if (loggingIn) {
-      return <Redirect to='/'/>;
+      return <Redirect to='/main'/>;
     }
     return (
       <div className="ui middle aligned center aligned grid">

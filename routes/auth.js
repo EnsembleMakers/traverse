@@ -21,7 +21,7 @@ router.post('/register', isNotLoggedIn, async (req, res, next) => {
     let user = new User(rebody);
     user = await user.save();
   
-    return res.redirect('/');
+    return res.json(user);
   } catch (error) {
     console.error(error);
     return next(error);
@@ -36,14 +36,14 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     }
     if (!user) {
       req.flash('loginError', info.message);
-      return res.redirect('/');
+      return res.status(404).json(info.message);
     }
     return req.login(user, (loginError) => {
       if (loginError) {
         console.error(loginError);
         return next(loginError);
       }
-      return res.redirect('/');
+      return res.json(user);
     });
   })(req, res, next);
 });

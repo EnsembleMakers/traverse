@@ -8,11 +8,11 @@ export function users(state = {}, action) {
       };
     case userConstants.GETALL_SUCCESS:
       return {
-        items: action.users
+        items: action.payload.users
       };
     case userConstants.GETALL_FAILURE:
       return { 
-        error: action.error
+        error: action.payload.error
       };
     case userConstants.DELETE_REQUEST:
       // add 'deleting:true' property to user being deleted
@@ -34,11 +34,11 @@ export function users(state = {}, action) {
       return {
         ...state,
         items: state.items.map(user => {
-          if (user.id === action.id) {
+          if (user.id === action.payload.id) {
             // make copy of user without 'deleting:true' property
             const { deleting, ...userCopy } = user;
             // return copy of user with 'deleteError:[error]' property
-            return { ...userCopy, deleteError: action.error };
+            return { ...userCopy, deleteError: action.payload.error };
           }
 
           return user;

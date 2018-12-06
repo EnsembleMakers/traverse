@@ -13,8 +13,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    trim: true,
-    maxlength: 15
+    trim: true
   },
   firstName: String,
   lastName: String,
@@ -51,7 +50,7 @@ const User = mongoose.model('User', userSchema);
 function validateUser(user) {
   const schema = {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-    password: Joi.string().min(1).max(15).required(),
+    password: Joi.string().required(),
     firstName: Joi.string().min(1),
     lastName: Joi.string().min(1),
     countryOfResidence: Joi.string().min(1).uppercase(),
