@@ -1,0 +1,16 @@
+.eight.wide.column{
+    display:flex;
+  }
+  
+  .fileImg{
+    /* object-fit: cover;
+    object-fit: fill; */
+    object-fit: scale-down;
+    max-height: 15rem;
+    /* object-fit: none;
+    object-fit: contain; */
+  }
+  
+  .fileDiv{
+    max-height: 18rem;
+  }

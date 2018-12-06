@@ -12,6 +12,8 @@ import Content from './Content';
 
 import '../styles/App.css';
 import { FirstPage, BuyerSurveyOne, BuyerSurveyTwo, BuyerSurveyThree } from './survey';
+// SY 추가
+import { OnTransaction, AboutProducer, RegProduct, Prac} from './transaction';
 
 class App extends Component {
 
@@ -32,6 +34,8 @@ class App extends Component {
         <Route path="/survey/buyer/1" component={BuyerSurveyOne}/>
         <Route path="/survey/buyer/2" component={BuyerSurveyTwo}/>
         <Route path="/survey/buyer/3" component={BuyerSurveyThree}/>
+        <Route path="/transaction/onTrade" component={OnTransaction}/>
+        <Route path="/transaction/regProduct" component={RegProduct}/>
         <Route path="/main" component={Main}/>
       </Switch>
     );
