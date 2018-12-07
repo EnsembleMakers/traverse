@@ -37,6 +37,30 @@ router.post('/', async (req, res) => {
   res.send(portion);
 });
 
+// create portion in post
+router.post('/:id', async (req, res) => {
+  const { error } = validate({ ...req.body, post_id : req.params.id });
+  
+  if (error) return res.status(400).send(error.message);
+
+  let portion = new Portion(req.body);
+  portion = await portion.save();
+
+  const post = await Post.findByIdAndUpdate(
+    req.params.id,
+    { $push: { participants: portion._id }},
+    { new: true }
+  );
+
+  const user = await User.findByIdAndUpdate(
+    portion.user_id,
+    { $push: { posts_join: post._id }},
+    { new: true }
+  );
+
+  res.send(portion);
+});
+
 // update portion
 router.patch('/:id', async (req, res) => {
   const { error } = validate(req.body);
