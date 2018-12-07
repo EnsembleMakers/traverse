@@ -15,3 +15,9 @@
   - `email`, `password`
 - 다음날 할 것
   - DB 연동
+#### 18/12/07
+- DB 연동
+- Redux 연동
+  - `local 로그인`
+- 다음날 할 것
+  - `oauth2 적용`, `product 페이지에 Redux 적용`
