@@ -20,6 +20,7 @@
 
 .productButton{
     text-align: center;
+    
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
@@ -44,4 +45,16 @@
     margin-left: 2%;
     margin-right: 2%;
     margin-bottom: 0px;
+}
+
+.buttons{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.ui.blue.labeled.submit.icon.button{
+    margin-right: 5%;
 }

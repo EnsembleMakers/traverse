@@ -1,5 +1,7 @@
 import React, {Fragment} from 'react';
 import '../../styles/AboutProducer.css';
+import { Link } from 'react-router-dom';
+
 
 export default function AboutProducer() {
   return (
@@ -17,7 +19,7 @@ export default function AboutProducer() {
                                      <div class="ui blue ribbon label">
                                          <i class="spoon icon"></i> Shoe Maker
                                      </div>
-                                       <img src="./img/producer.jpg"/>
+                                       <img src="/img/producer.jpg"/>
                                       </div>
                             </div>
                         </div>
@@ -229,8 +231,13 @@ export default function AboutProducer() {
                                 </div>
                                  {/* <textarea></textarea> */}
                                 </div>
+                                <div className="buttons">
                                 <div class="ui blue labeled submit icon button">
                                 <i class="icon edit"></i> Add Reply
+                                </div>
+                                <div class="ui black labeled submit icon button">
+                                <i class="icon edit"></i> Request
+                                </div>
                                 </div>
                             </form>
                             </div>
