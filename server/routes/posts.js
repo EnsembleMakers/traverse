@@ -35,6 +35,11 @@ router.post('/', async (req, res) => {
   let post = new post(req.body);
   post = await post.save();
 
+  await User.findByIdAndUpdate(
+    post.host,
+    { $push: { posts_host: post._id } },
+    { new: true }
+  );
   res.send(post);
 });
 

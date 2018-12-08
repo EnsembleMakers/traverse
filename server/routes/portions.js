@@ -34,6 +34,18 @@ router.post('/', async (req, res) => {
   let portion = new Portion(req.body);
   portion = await portion.save();
 
+  const post = await Post.findByIdAndUpdate(
+    portion.post_id,
+    { $push: { participants: portion._id }},
+    { new: true }
+  );
+
+  const user = await User.findByIdAndUpdate(
+    portion.user_id,
+    { $push: { posts_join: post._id }},
+    { new: true }
+  );
+
   res.send(portion);
 });
 
