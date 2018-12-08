@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
   
   if (error) return res.status(400).send(error.message);
 
-  let post = new post(req.body);
+  let post = new Post(req.body);
   post = await post.save();
 
   await User.findByIdAndUpdate(
