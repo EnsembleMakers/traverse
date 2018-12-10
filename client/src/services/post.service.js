@@ -5,7 +5,7 @@ require('dotenv').config();
 export const postService = {
   register,
   getPost,
-  list,
+  getPostList,
   update,
   delete: _delete
 };
@@ -16,7 +16,7 @@ async function register(post) {
 async function getPost(id) {
   return await axios.get(`/api/posts/${id}`);
 }
-async function list() {
+async function getPostList() {
   return await axios.get(`/api/posts`);
 }
 async function update(post) {

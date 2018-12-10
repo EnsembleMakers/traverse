@@ -27,5 +27,5 @@ async function update(id) {
   return await axios.patch(`/api/${id}`);
 }
 async function _delete(id) {
-  return await axios.delete(`${process.env.apiURL}/api/${id}`);
+  return await axios.delete(`/api/${id}`);
 }
