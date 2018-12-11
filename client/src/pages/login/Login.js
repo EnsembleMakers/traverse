@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from "react";
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions } from '../../actions';
+import { userActions, alertActions } from '../../actions';
 import { GoogleButton } from './oauth2';
 
 class Login extends PureComponent {
@@ -17,6 +17,9 @@ class Login extends PureComponent {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    const { dispatch } = this.props;
+    dispatch(alertActions.clear());
     console.log('Login constructed');
   }
 
@@ -43,10 +46,10 @@ class Login extends PureComponent {
     if (loggedIn && user) {
       return <Redirect to='/main'/>;
     }
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="ui middle aligned center aligned grid stacked">
-        {type &&
+        {type==="alert-danger" &&
         <div className="row">
           <div className="ui top attached warning icon message">
             <i className="attention icon"></i>
