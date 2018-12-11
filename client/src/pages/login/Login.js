@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -38,32 +38,43 @@ class Login extends PureComponent {
 
   render() {
     console.log('Login component loaded');
-    const { loggingIn } = this.props;
+    const { loggingIn, loggedIn, user, type } = this.props;
     const { email, password, submitted } = this.state;
-    if (loggingIn) {
+    if (loggedIn && user) {
       return <Redirect to='/main'/>;
     }
+    console.log(this.props);
     return (
-      <div className="ui middle aligned center aligned grid">
+      <div className="ui middle aligned center aligned grid stacked">
+        {type &&
+        <div className="row">
+          <div className="ui top attached warning icon message">
+            <i className="attention icon"></i>
+            <div className="content">
+              로그인 할 수 없습니다. ID 또는 Password를 확인해주세요.
+            </div>
+          </div>
+        </div>
+        }
         <form className="ui form large" onSubmit={this.handleSubmit}>
           <div className={'ui stacked segment'}>
-            <div className={'field' + (submitted && !email ? ' has-error' : '')}>
+            <div className={'field' + (submitted && !email ? ' error' : '')}>
               <div className="ui left icon input">
                 <i className="user icon" />
                 <input type="text" name="email" placeholder="E-mail address" value={email} onChange={this.handleChange}/>
-                {submitted && !email &&
-                  <div className="ui basic red pointing prompt label transition visible">E-mail address is required</div>
-                }
               </div>
+              {submitted && !email &&
+                <div className="ui basic red pointing prompt label transition visible">E-mail address is required</div>
+              }
             </div>
-            <div className={'field' + (submitted && !password ? ' has-error' : '')}>
+            <div className={'field' + (submitted && !password ? ' error' : '')}>
               <div className="ui left icon input">
                 <i className="lock icon" />
                 <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
-                {submitted && !password &&
-                  <div className="ui basic red pointing prompt label transition visible">Password is required</div>
-                }
               </div>
+              {submitted && !password &&
+                <div className="ui basic red pointing prompt label transition visible">Password is required</div>
+              }
             </div>
             <button className="ui fluid large teal submit button" type="submit">Login</button>
             <Link to="/register" className="ui button">Register</Link>
@@ -76,9 +87,13 @@ class Login extends PureComponent {
 }
 
 function mapStateToProps(state) {
-  const { loggingIn } = state.authentication;
+  const { loggingIn, loggedIn, user } = state.authentication;
+  const { type } = state.alert;
   return {
-    loggingIn
+    loggingIn,
+    loggedIn,
+    user,
+    type
   };
 }
 
