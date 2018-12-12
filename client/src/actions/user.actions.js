@@ -5,8 +5,10 @@ import { history } from '../helpers';
 
 export const userActions = {
     login,
+    loginOauth2,
     logout,
     register,
+    registerOauth2,
     getAll,
     update,
     delete: _delete
@@ -32,6 +34,15 @@ function login(email, password) {
   function request(email) { return { type: userConstants.LOGIN_REQUEST, payload: email } }
   function success(user) { return { type: userConstants.LOGIN_SUCCESS, payload: user } }
   function failure(error) { return { type: userConstants.LOGIN_FAILURE, payload: error } }
+}
+
+function loginOauth2() {
+  return dispatch => {
+
+  }
+  function request(email) { return { type: userConstants.LOGIN_OAUTH2_REQUEST, payload: email } }
+  function success(user) { return { type: userConstants.LOGIN_OAUTH2_SUCCESS, payload: user } }
+  function failure(error) { return { type: userConstants.LOGIN_OAUTH2_FAILURE, payload: error } }
 }
 
 function logout() {
@@ -60,6 +71,15 @@ function register(user) {
   function request(user) { return { type: userConstants.REGISTER_REQUEST, payload: user } }
   function success(user) { return { type: userConstants.REGISTER_SUCCESS, payload: user } }
   function failure(error) { return { type: userConstants.REGISTER_FAILURE, payload: error } }
+}
+
+function registerOauth2() {
+  return dispatch => {
+    
+  }
+  function request(email) { return { type: userConstants.REGISTER_OAUTH2_REQUEST, payload: email } }
+  function success(user) { return { type: userConstants.REGISTER_OAUTH2_SUCCESS, payload: user } }
+  function failure(error) { return { type: userConstants.REGISTER_OAUTH2_FAILURE, payload: error } }
 }
 
 function getAll() {
