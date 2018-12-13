@@ -73,7 +73,7 @@ function getPostList() {
   };
 
   function request() { return { type: postConstants.LIST_REQUEST } }
-  function success(post) { return { type: postConstants.LIST_SUCCESS, payload: post } }
+  function success(posts) { return { type: postConstants.LIST_SUCCESS, payload: posts } }
   function failure(error) { return { type: postConstants.LIST_FAILURE, payload: error } }
 }
 
