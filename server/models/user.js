@@ -23,8 +23,7 @@ const userSchema = new Schema({
   },
   onType: {
     type: String,
-    enum: ['supplier', 'buyer', 'admin'],
-    required: true
+    enum: ['supplier', 'buyer', 'admin']
   }, 
   provider: {
     type: String,
@@ -54,7 +53,7 @@ function validateUser(user) {
     firstName: Joi.string().min(1),
     lastName: Joi.string().min(1),
     countryOfResidence: Joi.string().min(1).uppercase(),
-    onType: Joi.string().required(),
+    onType: Joi.string(),
     provider: Joi.string().required(),
     oauth2: Joi.string()
   }

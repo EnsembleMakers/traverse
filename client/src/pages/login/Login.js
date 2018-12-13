@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { userActions, alertActions } from '../../actions';
 import { GoogleButton } from './oauth2';
+import Warning from "./Warning";
 
 class Login extends PureComponent {
   constructor(props) {
@@ -41,7 +42,7 @@ class Login extends PureComponent {
 
   render() {
     console.log('Login component loaded');
-    const { loggingIn, loggedIn, user, type } = this.props;
+    const { loggingIn, loggedIn, user, alertType } = this.props;
     const { email, password, submitted } = this.state;
     if (loggedIn && user) {
       return <Redirect to='/main'/>;
@@ -49,14 +50,9 @@ class Login extends PureComponent {
     // console.log(this.props);
     return (
       <div className="ui middle aligned center aligned grid stacked">
-        {type==="alert-danger" &&
+        {alertType==="alert-danger" &&
         <div className="row">
-          <div className="ui top attached warning icon message">
-            <i className="attention icon"></i>
-            <div className="content">
-              로그인 할 수 없습니다. ID 또는 Password를 확인해주세요.
-            </div>
-          </div>
+          <Warning message={`ID 또는 Password가 맞지 않습니다. 확인해주세요.`} />
         </div>
         }
         <form className="ui form large" onSubmit={this.handleSubmit}>
@@ -80,7 +76,7 @@ class Login extends PureComponent {
               }
             </div>
             <button className="ui fluid large teal submit button" type="submit">Login</button>
-            <Link to="/register" className="ui button">Register</Link>
+            <Link to="/home/register" className="ui button">Register</Link>
             <GoogleButton/>
           </div>
         </form>
@@ -91,12 +87,12 @@ class Login extends PureComponent {
 
 function mapStateToProps(state) {
   const { loggingIn, loggedIn, user } = state.authentication;
-  const { type } = state.alert;
+  const alertType = state.alert.type;
   return {
     loggingIn,
     loggedIn,
     user,
-    type
+    alertType
   };
 }
 

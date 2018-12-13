@@ -38,7 +38,7 @@ function login(email, password) {
 
 function socialLogin() {
   return dispatch => {
-
+    
   }
   function request(email) { return { type: userConstants.SOCIAL_LOGIN_REQUEST, payload: email } }
   function success(user) { return { type: userConstants.SOCIAL_LOGIN_SUCCESS, payload: user } }

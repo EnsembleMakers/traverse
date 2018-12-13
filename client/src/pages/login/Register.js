@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions } from '../../actions';
+import { userActions, alertActions } from '../../actions';
+import Warning from './Warning';
 
 class Register extends Component {
   constructor(props) {
@@ -21,6 +22,9 @@ class Register extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    const { dispatch } = this.props;
+    dispatch(alertActions.clear());
     console.log('Register constructed');
   }
 
@@ -44,20 +48,23 @@ class Register extends Component {
     const { user } = this.state;
     const { dispatch } = this.props;
     if (user.firstName && user.lastName && user.email && user.password){
-      console.log('handleSubmit event emission');
-      console.log(this.state);
       dispatch(userActions.register(user));
     }
   }
 
   render() {
     console.log('Register component loaded');
-    const { registering } = this.props;
+    const { registering, alertType } = this.props;
     const { user, submitted } = this.state;
     return (
       <div className="ui middle aligned center aligned grid">
+      {alertType==="alert-danger" &&
+        <div className="row">
+          <Warning message={`이미 존재하는 계정입니다.`} />
+        </div>
+      }
       <form className={'ui form large'} onSubmit={this.handleSubmit}>
-        <div className="ui stacked segment error">
+        <div className="ui stacked segment">
           <div className={'field' + (submitted && !user.email ? ' error' : '')}>
             <div className="ui left icon input">
               <i className="user icon" />
@@ -99,7 +106,7 @@ class Register extends Component {
               <i className="lock icon" />
               <input type="password" name="confirmPassword" placeholder="Retype Password" value={user.confirmPassword} onChange={this.handleChange} />
             </div>
-            {(!user.password || (user.password !== user.confirmPassword)) &&
+            {(user.password && (user.password !== user.confirmPassword)) &&
               <div className="ui basic red pointing prompt label transition visible">Please enter password correctly</div>
             }
           </div>
@@ -116,8 +123,10 @@ class Register extends Component {
 
 function mapStateToProps(state) {
   const { registering } = state.registration;
+  const alertType = state.alert.type;
   return {
-    registering
+    registering,
+    alertType,
   };
 }
 

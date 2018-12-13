@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
-const bcrypt = require('bcrypt');
-const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
+
+const { isLoggedIn, isNotLoggedIn, hashPassword } = require('./middlewares');
 const { User } = require('../models/user');
 
 const router = express.Router();
@@ -9,15 +9,18 @@ router.post('/register', isNotLoggedIn, async (req, res, next) => {
   const {email, password} = req.body;
   try {
     const exUser = await User.find({ email: email });
-    if (exUser) {
+    if (exUser[0]) {
       req.flash('registerError', '이미 가입된 이메일입니다.');
-      return res.redirect('/register');
+      // return res.redirect('/register');
+      return res.status(404).json('registerError');
     }
-    const rebody = Object.keys(req.body).map(async (key) => {    
-      if (key === 'password')
-        return { key: await bcrypt.hash(req.body[password], 12)}
-      else return { key: req.body[key] };
+    const rebody = {};
+    rebody['password'] = await hashPassword(password);
+    Object.keys(req.body).map(async (key) => {
+      if (key === 'password') return;
+      else return rebody[key] = req.body[key];
     });
+    // console.log(rebody);
     let user = new User(rebody);
     user = await user.save();
   
