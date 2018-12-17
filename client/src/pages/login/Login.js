@@ -76,7 +76,7 @@ class Login extends PureComponent {
               }
             </div>
             <button className="ui fluid large teal submit button" type="submit">Login</button>
-            <Link to="/home/register" className="ui button">Register</Link>
+            <Link to="/main/register" className="ui button">Register</Link>
             <GoogleButton/>
           </div>
         </form>
