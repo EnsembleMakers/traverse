@@ -99,8 +99,8 @@ class RegProduct extends Component {
                 file: file,
             })
         })
-        console.log(this.props.change)        
-        this.props.changeState(this.staet.dealInfo);
+        console.log(this.props.changeState)        
+        // this.props.changeState(this.state.dealInfo);
     }
 
     // passProps = () => {
@@ -222,6 +222,9 @@ class RegProduct extends Component {
                         <div>
                             <input type="button" value="Submit" onClick={this.createRequest} ></input>
                         </div>
+                        <div>
+                            <input type="button" value="testtest" onClick={this.props.changeState} ></input>
+                        </div>
                     </div>
                 </div>
 
@@ -230,12 +233,12 @@ class RegProduct extends Component {
     }
 }
 
+export default RegProduct;
 
 // <div>
 //     <TransactionTwo dealInfo={this.state.dealInfo}/>
 // </div>
 
-export default RegProduct;
 
 
 
