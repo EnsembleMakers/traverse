@@ -89,7 +89,7 @@ class RegProduct extends Component {
 
     createRequest = async () => {
         const { productCode, totalOrder, productPrice, totalPrice, file, dealInfo } = this.state;
-        this.setState({
+        await this.setState({
             dealInfo: dealInfo.concat({
                 id: this.id++,
                 productCode: productCode,

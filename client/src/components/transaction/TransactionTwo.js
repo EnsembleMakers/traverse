@@ -3,12 +3,6 @@ import React, { Fragment, Component } from 'react';
 // 오른쪽 상단, postSchema 연결부분
 class TransactionTwo extends Component {
 
-    constructor(props) {
-        super(props);
-
-    }
-
-
     render() {
         // const { dealInfo } = this.props;
         // const list = dealInfo.map(
@@ -20,8 +14,8 @@ class TransactionTwo extends Component {
                 <div class="eight wide column">
                     <div className="productDetail">
                         <div class="ui segment">
-                            <h3>DealInfo</h3><br />
                             <div>
+                                <h3>DealInfo</h3><br />
                                 <h3>
                                     {this.props.data.id}
                                 </h3>
