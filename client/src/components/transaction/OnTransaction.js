@@ -81,7 +81,7 @@ class Modal extends React.Component {
 class OnTransaction extends Component {
 
   render() {
-
+    console.log(this.props);
     return (
       <Fragment>
         <div className="top">
@@ -89,14 +89,14 @@ class OnTransaction extends Component {
         </div>
 
         <div class="ui grid container">
-          <TransactionOne/>
-          <TransactionTwo/>
+          <TransactionOne />
+          <TransactionTwo data={this.props.data}/>
         </div>
 
         <div class="ui grid container">
-          <TransactionThree/>
-          <TransactionFour/>
-          <Modal/>
+          <TransactionThree />
+          <TransactionFour />
+          <Modal />
         </div>
       </Fragment>
     );

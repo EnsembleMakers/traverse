@@ -1,22 +1,13 @@
 import React, { Fragment, Component } from 'react';
-import DealItem from './DealItem';
-import RegProduct from './RegProduct';
 
 // 오른쪽 상단, postSchema 연결부분
 class TransactionTwo extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.changeState = this.changeState.bind(this);
+
     }
 
-    // static defaultProps = {
-    //     dealInfo: ['ddddd']
-    // }
-
-    changeState = (value) => {
-        this.setState(value);
-    }
 
     render() {
         // const { dealInfo } = this.props;
@@ -31,7 +22,21 @@ class TransactionTwo extends Component {
                         <div class="ui segment">
                             <h3>DealInfo</h3><br />
                             <div>
-                                <RegProduct changeState={this.changeState}/>
+                                <h3>
+                                    {this.props.data.id}
+                                </h3>
+                                <h3>
+                                    {this.props.data.productCode}
+                                </h3>
+                                <h3>
+                                    {this.props.data.totalOrder}
+                                </h3>
+                                <h3>
+                                    {this.props.data.productPrice}
+                                </h3>
+                                <h3>
+                                    {this.props.data.totalPrice}
+                                </h3>
                             </div>
                         </div>
                     </div>

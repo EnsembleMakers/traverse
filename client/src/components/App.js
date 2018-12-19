@@ -19,7 +19,10 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
+    //sy 추가
+    this.state = {
+      data:{}
+    }
     const { dispatch } = this.props;
     history.listen((location, action) => {
         // clear alert on location change
@@ -27,6 +30,12 @@ class App extends Component {
     });
   }
 
+  changeState = (value) => {
+    this.setState({data:value[1]});
+    console.log(this.state.data);
+  }
+
+  // sy 수정
   renderContent () {
     return (
       <Switch>
@@ -34,8 +43,8 @@ class App extends Component {
         <Route path="/survey/buyer/1" component={BuyerSurveyOne}/>
         <Route path="/survey/buyer/2" component={BuyerSurveyTwo}/>
         <Route path="/survey/buyer/3" component={BuyerSurveyThree}/>
-        <Route path="/transaction/onTransaction" component={OnTransaction}/>
-        <Route path="/transaction/regProduct" component={RegProduct}/>
+        <Route path="/transaction/onTransaction" render={(props)=><OnTransaction data={this.state.data}/>}/>
+        <Route path="/transaction/regProduct" render={(props) => <RegProduct changeState={this.changeState}/>}/>
         <Route path="/main" component={Main}/>
       </Switch>
     );
@@ -57,6 +66,7 @@ class App extends Component {
     console.log('컴포넌트 마운트');
   }
 }
+
 
 function mapStateToProps(state) {
   const { alert } = state;

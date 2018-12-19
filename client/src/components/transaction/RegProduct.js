@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import Link from 'react-router-dom/Link';
 
 import FormOne from './FormOne';
 import FormTwo from './FormTwo';
@@ -40,7 +41,6 @@ class RegProduct extends Component {
         this.handleChangeFile = this.handleChangeFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.createRequest = this.createRequest.bind(this);
-        console.log(this.props.change)        
     }
 
     handleChange = (e) => {
@@ -87,7 +87,7 @@ class RegProduct extends Component {
         });
     }
 
-    createRequest = () => {
+    createRequest = async () => {
         const { productCode, totalOrder, productPrice, totalPrice, file, dealInfo } = this.state;
         this.setState({
             dealInfo: dealInfo.concat({
@@ -99,8 +99,7 @@ class RegProduct extends Component {
                 file: file,
             })
         })
-        console.log(this.props.changeState)        
-        // this.props.changeState(this.state.dealInfo);
+        this.props.changeState(this.state.dealInfo);
     }
 
     // passProps = () => {
@@ -221,9 +220,7 @@ class RegProduct extends Component {
                         </div>
                         <div>
                             <input type="button" value="Submit" onClick={this.createRequest} ></input>
-                        </div>
-                        <div>
-                            <input type="button" value="testtest" onClick={this.props.changeState} ></input>
+                            <Link to="/transaction/onTransaction"><button>Go onTransaction</button></Link>
                         </div>
                     </div>
                 </div>
