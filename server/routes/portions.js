@@ -1,5 +1,6 @@
 const { Portion, validate } = require('../models/portion');
 const { Post } = require('../models/post');
+const { User } = require('../models/user');
 
 const express = require('express');
 const router = express.Router();
@@ -20,7 +21,7 @@ router.get('/:id', async (req, res) => {
     .populate('post_id')
     .populate('user_id');
   
-  if (!post) return res.status(404).send(`ID ${req.params.id} is not found`);
+  if (!portion) return res.status(404).send(`ID ${req.params.id} is not found`);
   
   res.send(portion);
 });
@@ -33,6 +34,43 @@ router.post('/', async (req, res) => {
 
   let portion = new Portion(req.body);
   portion = await portion.save();
+
+  const post = await Post.findByIdAndUpdate(
+    portion.post_id,
+    { $push: { participants: portion._id }},
+    { new: true }
+  );
+
+  const user = await User.findByIdAndUpdate(
+    portion.user_id,
+    { $push: { posts_join: post._id }},
+    { new: true }
+  );
+
+  res.send(portion);
+});
+
+// create portion in post
+router.post('/:id', async (req, res) => {
+  const rebody = {...req.body, post_id: req.params.id};
+  const { error } = validate(rebody);
+  
+  if (error) return res.status(400).send(error.message);
+
+  let portion = new Portion(rebody);
+  portion = await portion.save();
+
+  const post = await Post.findByIdAndUpdate(
+    req.params.id,
+    { $push: { participants: portion._id }},
+    { new: true }
+  );
+
+  const user = await User.findByIdAndUpdate(
+    portion.user_id,
+    { $push: { posts_join: post._id }},
+    { new: true }
+  );
 
   res.send(portion);
 });

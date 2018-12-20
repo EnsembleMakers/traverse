@@ -43,6 +43,7 @@ function validatePost(post) {
     images: Joi.array(),
     kinds: Joi.array(),
     price: Joi.number().min(1000).required(),
+    totalQuantity: Joi.number(),
     host: Joi.array().required(),
     participants: Joi.array()
   }

@@ -6,7 +6,8 @@ module.exports = (passport) => {
   passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_ID,
     clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: '/auth/google/callback',
+    proxy: true
   }, async (accessToken, refreshToken, profile, done) => {
     try {
       const exUser = await User.find({

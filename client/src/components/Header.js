@@ -49,14 +49,26 @@ class Header extends PureComponent {
     } else {
       return (
         <Fragment>
-          <a className="ui item blue image label">
+          <a className={`ui item ${this.changeColor()} image label`}>
             <img src={faker.image.avatar()}/>
             {this.props.user.email} 님
-            <div className="detail">Friend</div>
+            <div className="detail">{this.props.user.onType}</div>
           </a>
           <a className="item" onClick={this.handleClick}>Logout</a>
         </Fragment>
       );
+    }
+  }
+
+  changeColor() {
+    switch(this.props.user.onType) {
+      case 'admin':
+        return 'pink';
+      case 'supplier':
+        return 'Teal';
+      case 'buyer':
+        return 'Olive';
+      default: return 'Teal';
     }
   }
 }

@@ -5,61 +5,81 @@ import { history } from '../helpers';
 
 export const userActions = {
     login,
+    socialLogin,
     logout,
     register,
+    socialRegister,
     getAll,
     update,
     delete: _delete
 };
 
-export function login(email, password) {
-    return dispatch => {
-      dispatch(request(email));
+function login(email, password) {
+  return dispatch => {
+    dispatch(request(email));
 
-      userService.login(email, password)
-        .then(
-          user => { 
-            dispatch(success(user));
-            history.push('/');
-          },
-          error => {
-            dispatch(failure(error.toString()));
-            dispatch(alertActions.error(error.toString()));
-          }
-        );
-    };
+    userService.login(email, password)
+      .then(
+        user => { 
+          dispatch(success(user));
+          history.push('/');
+        },
+        error => {
+          dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
+        }
+      );
+  };
 
-    function request(email) { return { type: userConstants.LOGIN_REQUEST, payload: email } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, payload: user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, payload: error } }
+  function request(email) { return { type: userConstants.LOGIN_REQUEST, payload: email } }
+  function success(user) { return { type: userConstants.LOGIN_SUCCESS, payload: user } }
+  function failure(error) { return { type: userConstants.LOGIN_FAILURE, payload: error } }
 }
 
-export function logout() {
-    userService.logout();
-    return { type: userConstants.LOGOUT };
+function socialLogin() {
+  return dispatch => {
+    
+  }
+  function request(email) { return { type: userConstants.SOCIAL_LOGIN_REQUEST, payload: email } }
+  function success(user) { return { type: userConstants.SOCIAL_LOGIN_SUCCESS, payload: user } }
+  function failure(error) { return { type: userConstants.SOCIAL_LOGIN_FAILURE, payload: error } }
+}
+
+function logout() {
+  userService.logout();
+  return { type: userConstants.LOGOUT };
 }
 
 function register(user) {
-    return dispatch => {
-      dispatch(request(user));
+  return dispatch => {
+    dispatch(request(user));
 
-      userService.register(user)
-        .then(
-          user => { 
-            dispatch(success(user));
-            history.push('/login');
-            dispatch(alertActions.success('Registration successful'));
-          },
-          error => {
-            dispatch(failure(error.toString()));
-            dispatch(alertActions.error(error.toString()));
-          }
-        );
-    };
+    userService.register(user)
+      .then(
+        user => { 
+          dispatch(success(user));
+          history.push('/login');
+          dispatch(alertActions.success('Registration successful'));
+        },
+        error => {
+          dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
+        }
+      );
+  };
 
-    function request(user) { return { type: userConstants.REGISTER_REQUEST, payload: user } }
-    function success(user) { return { type: userConstants.REGISTER_SUCCESS, payload: user } }
-    function failure(error) { return { type: userConstants.REGISTER_FAILURE, payload: error } }
+  function request(user) { return { type: userConstants.REGISTER_REQUEST, payload: user } }
+  function success(user) { return { type: userConstants.REGISTER_SUCCESS, payload: user } }
+  function failure(error) { return { type: userConstants.REGISTER_FAILURE, payload: error } }
+}
+
+function socialRegister() {
+  return dispatch => {
+    
+  }
+  function request(email) { return { type: userConstants.SOCIAL_REGISTER_REQUEST, payload: email } }
+  function success(user) { return { type: userConstants.SOCIAL_REGISTER_SUCCESS, payload: user } }
+  function failure(error) { return { type: userConstants.SOCIAL_REGISTER_FAILURE, payload: error } }
 }
 
 function getAll() {
@@ -78,28 +98,28 @@ function getAll() {
     function failure(error) { return { type: userConstants.GETALL_FAILURE, payload: error } }
   }
   
-  function update(id) {
-    return dispatch => {
-      dispatch(request(id));
-      
-      userService.update(id)
-      .then(
-        user => {
-          dispatch(success(user));
-          dispatch(alertActions.success('UserUpdate successful'));
-        },
-        error => {
-          dispatch(failure(id));
-          dispatch(alertActions.error(error.toString()));
-        }
-      )
-    }
-    function request(id) { return { type: userConstants.UPDATE_REQUEST, payload: id } }
-    function success(user) { return { type: userConstants.UPDATE_SUCCESS, payload: user } }
-    function failure(id) { return { type: userConstants.UPDATE_FAILURE, payload: id } }
-  }
+function update(id) {
+  return dispatch => {
+    dispatch(request(id));
     
-    // prefixed function name with underscore because delete is a reserved word in javascript
+    userService.update(id)
+    .then(
+      user => {
+        dispatch(success(user));
+        dispatch(alertActions.success('UserUpdate successful'));
+      },
+      error => {
+        dispatch(failure(id));
+        dispatch(alertActions.error(error.toString()));
+      }
+    )
+  }
+  function request(id) { return { type: userConstants.UPDATE_REQUEST, payload: id } }
+  function success(user) { return { type: userConstants.UPDATE_SUCCESS, payload: user } }
+  function failure(id) { return { type: userConstants.UPDATE_FAILURE, payload: id } }
+}
+    
+// prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
     return dispatch => {
       dispatch(request(id));
