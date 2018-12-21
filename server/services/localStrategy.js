@@ -8,8 +8,8 @@ module.exports = (passport) => {
     usernameField: 'email',
     passwordField: 'password'
   }, async (email, password, done) => {
-    console.log(email);
-    console.log(password);
+    // console.log(email);
+    // console.log(password);
     try {
       const exUser = await User.find({ email: email });
       // console.log(exUser[0]);

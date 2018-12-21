@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 // const RateLimit = require('express-rate-limit');
-const bcrypt = require('bcrypt');
 
 exports.isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -16,19 +15,6 @@ exports.isNotLoggedIn = (req, res, next) => {
   } else {
     res.redirect('/');
   }
-}
-
-exports.hashPassword = async (password) => {
-  const saltRounds = 10;
-
-  const hashedPassword = await new Promise((resolve, reject) => {
-    bcrypt.hash(password, saltRounds, function(err, hash) {
-      if (err) reject(err)
-      resolve(hash)
-    });
-  });
-
-  return hashedPassword;
 }
 
 exports.verifyToken = (req, res, next) => {
