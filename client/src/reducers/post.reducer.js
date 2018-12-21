@@ -20,14 +20,10 @@ export function post(state={}, action) {
         loading: true,
       };
     case postConstants.GET_SUCCESS:
-      return {
-        loaded: true,
-        post: action.payload.data
-      };
     case postConstants.LIST_SUCCESS:
       return {
         loaded: true,
-        posts: action.payload.data
+        post: action.payload.data
       };
     case postConstants.GET_FAILURE:
     case postConstants.LIST_FAILURE:

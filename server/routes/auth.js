@@ -1,7 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 
-const { isLoggedIn, isNotLoggedIn, hashPassword } = require('./middlewares');
+const { hashPassword } = require('../lib/hashPassword');
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User } = require('../models/user');
 
 const router = express.Router();

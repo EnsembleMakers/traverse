@@ -1,4 +1,4 @@
 export * from './alert.constants';
 export * from './user.constants';
 export * from './post.constants';
-export * from './portions.constants';
+export * from './portion.constants';

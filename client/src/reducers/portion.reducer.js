@@ -1,39 +1,39 @@
-import { portionsConstants } from '../constants';
+import { portionConstants } from '../constants';
 
 export function portion(state={}, action) {
   switch (action.type) {
-    case portionsConstants.REGISTER_REQUEST:
-    case portionsConstants.REGISTER_BY_ID_REQUEST:
+    case portionConstants.REGISTER_REQUEST:
+    case portionConstants.REGISTER_BY_ID_REQUEST:
       return {
         portioning: true,
         portion: { post_id: action.payload.data }
       };
-    case portionsConstants.REGISTER_SUCCESS:
-    case portionsConstants.REGISTER_BY_ID_SUCCESS:
+    case portionConstants.REGISTER_SUCCESS:
+    case portionConstants.REGISTER_BY_ID_SUCCESS:
       return {
         portioned: true,
         portion: action.payload.data
       };
-    case portionsConstants.REGISTER_FAILURE:
-    case portionsConstants.REGISTER_BY_ID_FAILURE:
+    case portionConstants.REGISTER_FAILURE:
+    case portionConstants.REGISTER_BY_ID_FAILURE:
       return {};
-    case portionsConstants.GET_REQUEST:
-    case portionsConstants.LIST_REQUEST:
+    case portionConstants.GET_REQUEST:
+    case portionConstants.LIST_REQUEST:
       return {
         loading: true,
       };
-    case portionsConstants.GET_SUCCESS:
+    case portionConstants.GET_SUCCESS:
       return {
         loaded: true,
         portion: action.payload.data
       };
-    case portionsConstants.LIST_SUCCESS:
+    case portionConstants.LIST_SUCCESS:
       return {
         loaded: true,
         portions: action.payload.data
       };
-    case portionsConstants.GET_FAILURE:
-    case portionsConstants.LIST_FAILURE:
+    case portionConstants.GET_FAILURE:
+    case portionConstants.LIST_FAILURE:
       return {};
     default: 
       return state;

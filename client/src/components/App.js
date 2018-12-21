@@ -43,8 +43,8 @@ class App extends Component {
         <Route path="/survey/buyer/1" component={BuyerSurveyOne}/>
         <Route path="/survey/buyer/2" component={BuyerSurveyTwo}/>
         <Route path="/survey/buyer/3" component={BuyerSurveyThree}/>
-        <Route path="/transaction/onTransaction" render={(props)=><OnTransaction data={this.state.data}/>}/>
-        <Route path="/transaction/regProduct" render={(props) => <RegProduct changeState={this.changeState}/>}/>
+        <Route exact path="/transactions" render={(props)=><OnTransaction data={this.state.data}/>}/>
+        <Route path="/register-product" render={(props) => <RegProduct changeState={this.changeState}/>}/>
         <Route path="/main" component={Main}/>
       </Switch>
     );
