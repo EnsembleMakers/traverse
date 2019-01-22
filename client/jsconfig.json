@@ -1,0 +1,10 @@
+"compilerOptions": {
+  "baseUrl": "src", // This must be specified if "paths" is.
+  "paths": {
+      "@store/*": ["store/*"],
+      "@pages/*": ["pages/*"],
+      "@containers/*": ["containers/*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"]
+  }
+}

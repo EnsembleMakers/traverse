@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from "react";
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions, alertActions } from '../../actions';
+import { userActions, alertActions } from 'store/actions';
 import { GoogleButton } from './oauth2';
 import Warning from "./Warning";
 
