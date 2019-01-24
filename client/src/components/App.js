@@ -13,56 +13,56 @@ import Content from './Content';
 import '../styles/App.css';
 import { FirstPage, BuyerSurveyOne, BuyerSurveyTwo, BuyerSurveyThree } from './survey';
 // SY 추가
-import { OnTransaction, AboutProducer, RegProduct} from './transaction';
+import { OnTransaction, AboutProducer, RegProduct } from './transaction';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    //sy 추가
+    // sy 추가
     this.state = {
-      data:{}
-    }
+      data: {},
+    };
     const { dispatch } = this.props;
     history.listen((location, action) => {
-        // clear alert on location change
-        dispatch(alertActions.clear());
+      // clear alert on location change
+      dispatch(alertActions.clear());
     });
   }
 
   changeState = (value) => {
-    this.setState({data:value[1]});
+    this.setState({ data: value[1] });
     console.log(this.state.data);
   }
 
   // sy 수정
-  renderContent () {
+  renderContent() {
     return (
       <Switch>
-        <Route exact path="/" component={FirstPage}/>
-        <Route path="/survey/buyer/1" component={BuyerSurveyOne}/>
-        <Route path="/survey/buyer/2" component={BuyerSurveyTwo}/>
-        <Route path="/survey/buyer/3" component={BuyerSurveyThree}/>
-        <Route exact path="/transactions" render={(props)=><OnTransaction data={this.state.data}/>}/>
-        <Route path="/register-product" render={(props) => <RegProduct changeState={this.changeState}/>}/>
-        <Route path="/main" component={Main}/>
+        <Route exact path="/" component={FirstPage} />
+        <Route path="/survey/buyer/1" component={BuyerSurveyOne} />
+        <Route path="/survey/buyer/2" component={BuyerSurveyTwo} />
+        <Route path="/survey/buyer/3" component={BuyerSurveyThree} />
+        <Route exact path="/transactions" render={props => <OnTransaction data={this.state.data} />} />
+        <Route path="/register-product" render={props => <RegProduct changeState={this.changeState} />} />
+        <Route path="/main" component={Main} />
       </Switch>
     );
   }
 
-  render () {
+  render() {
     const { alert } = this.props;
     return (
       <div className="ui placeholder segment">
-        {alert.message &&
-          <div className={`alert ${alert.type}`}>{alert.message}</div>
+        {alert.message
+          && <div className={`alert ${alert.type}`}>{alert.message}</div>
         }
         {this.renderContent()}
       </div>
-    )
+    );
   }
 
-  componentDidMount () {
+  componentDidMount() {
     console.log('컴포넌트 마운트');
   }
 }
@@ -71,7 +71,7 @@ class App extends Component {
 function mapStateToProps(state) {
   const { alert } = state;
   return {
-      alert
+    alert,
   };
 }
 
