@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -16,7 +17,14 @@ module.exports = {
   plugins: [],
   optimization: {},
   resolve: {
-    modules: ['node_modules'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.json', '.jsx', '.css'],
+    alias: {
+      '@store$': '/store',
+      '@pages$': '/pages',
+      '@containers$': '/containers',
+      '@components$': '/components',
+      '@styles$': '/styles'
+    }
   },
 };
