@@ -1,10 +1,19 @@
 const path = require('path');
 
 module.exports = {
+  parser: 'babel-eslint',
+  plugins: ['react', 'jsx-a11y', 'import'],
   extends: ['react-app', 'airbnb'],
   settings: {
     'import/resolver': {
-      node: { paths: [path.resolve('./src')] },
+      node: { extensions: ['.js', '.jsx'] },
+      alias: [
+        ['@store', './src/store'],
+        ['@pages', './src/pages'],
+        ['@containers', './src/containers'],
+        ['@components', './src/components'],
+        ['@styles', './src/styles'],
+      ],
     },
   },
   rules: {

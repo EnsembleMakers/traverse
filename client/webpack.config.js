@@ -12,7 +12,12 @@ module.exports = {
     publicPath: '',
   },
   module: {
-
+    rules: {
+      enforce: 'pre',
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'eslint-loader',
+    },
   },
   plugins: [],
   optimization: {},
@@ -24,7 +29,7 @@ module.exports = {
       '@pages$': '/pages',
       '@containers$': '/containers',
       '@components$': '/components',
-      '@styles$': '/styles'
-    }
+      '@styles$': '/styles',
+    },
   },
 };
